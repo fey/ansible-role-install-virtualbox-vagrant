@@ -1,2 +1,32 @@
 ---
+- name: fetch checksum
+  become: true
+  get_url:
+    url: "{{ vagrant.deb_sha_url }}"
+    dest: /tmp/vagrant-checksum
 
+- name: filter checksum
+  become: true
+  command: cat /tmp/vagrant-checksum | grep x86_64.deb | cut -d' ' -f1
+  register: vagrant_sha
+
+- name: download vagrant deb
+  become: true
+  get_url:
+    url: "{{ vagrant.deb_url }}"
+    dest: "/opt/vagrant.deb"
+  checksum: "sha256:{{ vagrant_sha.stdout }}"
+
+- name: Install vagrant
+  become: true
+  apt:
+    deb: "/opt/vagrant.deb"
+
+- name: remove files
+  become: true
+  file:
+    state: absent
+    path: "{{ item }}"
+  with_items:
+    - /opt/vagrant.deb
+    - /tmp/vagrant-checksum
