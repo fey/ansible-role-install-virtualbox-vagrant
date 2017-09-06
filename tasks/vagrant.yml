@@ -7,7 +7,7 @@
 
 - name: VAGRANT | filter checksum
   become: true
-  command: "cat /tmp/vagrant-checksum | grep x86_64.deb | cut -d' ' -f1"
+  shell: "cat /tmp/vagrant-checksum | grep x86_64.deb | cut -d' ' -f1"
   register: vagrant_sha
 
 - name: VAGRANT | download vagrant deb
