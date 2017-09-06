@@ -7,4 +7,4 @@ virtualbox:
 
 vagrant_version: 1.9.8
 vagrant_deb_url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb"
-vagrant_deb_sha_url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}}/vagrant_{{ vagrant_version }}_SHA256SUMS"
+vagrant_deb_sha_url: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_SHA256SUMS"
