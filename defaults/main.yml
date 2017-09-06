@@ -1,7 +1,7 @@
 virtualbox:
   version: 5.1
   apt_key_url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
-  apt_key_url_old: https://www.virtualbox.org/download/oracle_vbox_.asc
+  apt_key_url_old: https://www.virtualbox.org/download/oracle_vbox.asc
   apt_repo_url: http://download.virtualbox.org/virtualbox/debian
   users: []
 
