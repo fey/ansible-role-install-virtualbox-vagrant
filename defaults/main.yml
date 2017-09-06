@@ -1,0 +1,5 @@
+virtual_box:
+  version: 1.0
+
+vagrant:
+  version: 1.0
