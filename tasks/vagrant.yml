@@ -2,7 +2,7 @@
 - name: VAGRANT | fetch checksum
   become: true
   get_url:
-    url: "{{ vagrant.deb_sha_url }}"
+    url: "{{ vagrant_deb_sha_url }}"
     dest: /tmp/vagrant-checksum
 
 - name: VAGRANT | filter checksum
@@ -13,7 +13,7 @@
 - name: VAGRANT | download vagrant deb
   become: true
   get_url:
-    url: "{{ vagrant.deb_url }}"
+    url: "{{ vagrant_deb_url }}"
     dest: /opt/vagrant.deb
     checksum: "sha256:{{ vagrant_sha.stdout }}"
 
