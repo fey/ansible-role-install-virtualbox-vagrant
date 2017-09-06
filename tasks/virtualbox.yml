@@ -2,7 +2,7 @@
 - name: VIRTUALBOX | add vb secure key
   become: true
   apt_key:
-    url: "{{ virtualbox.apt_key_url }}"
+    url: "{{ virtualbox_apt_key_url }}"
     state: present
   when: ( ansible_distribution == 'Debian' and ansible_distribution_version >= '8' ) or
         ( ansible_distribution == 'Ubuntu' and ansible_distribution_version >= '16.04' )
@@ -31,7 +31,7 @@
     - "linux-headers-{{ ansible_kernel }}"
     - dkms
     - build-essential
-    - "virtualbox-{{ virtualbox.version }}"
+    - "virtualbox-{{ virtualbox_version }}"
 
 - name: VIRTUALBOX | add users to vb-group
   become: true
@@ -39,4 +39,4 @@
     name: "{{ item }}"
     groups: vboxusers
     append: yes
-  with_items: "{{ virtualbox.users }}"
+  with_items: "{{ virtualbox_users }}"
