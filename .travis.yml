@@ -23,6 +23,7 @@ script:
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
     ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
+    | tee /dev/tty
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
@@ -30,7 +31,8 @@ script:
   # Check if virtualbox is installed
   # TODO: Check if anything has to be installed
   - VBoxManage --version
+  - VBoxManage --help
   
   # Check if vagrant is installed
   - vagrant --version
-
+  - vagrant --help
