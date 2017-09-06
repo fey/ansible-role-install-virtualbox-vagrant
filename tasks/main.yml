@@ -1,4 +1,9 @@
 ---
+- vars:
+  virtualbox:
+    version: 5.1
+  vagrant:
+    version: 1.9.8
 - include: virtualbox.yml
 - include: vagrant.yml
 

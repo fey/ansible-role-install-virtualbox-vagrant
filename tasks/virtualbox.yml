@@ -1,5 +1,5 @@
 ---
-- name: add vb secure key
+- name: VIRTUALBOX | add vb secure key
   become: true
   apt_key:
     url: "{{ virtualbox.apt_key_url }}"
@@ -7,7 +7,7 @@
   when: ( ansible_distribution == 'Debian' and ansible_distribution_version >= '8' ) or
         ( ansible_distribution == 'Ubuntu' and ansible_distribution_version >= '16.04' )
 
-- name: add vb secure key (old)
+- name: VIRTUALBOX | add vb secure key (old)
   become: true
   apt_key:
     url: "{{ virtualbox.apt_key_url_old }}"
@@ -15,13 +15,13 @@
   when: ( ansible_distribution == 'Debian' and ansible_distribution_version < '8' ) or
         ( ansible_distribution == 'Ubuntu' and ansible_distribution_version < '16.04' )
 
-- name: add paket sources
+- name: VIRTUALBOX | add paket sources
   become: true
   apt_repository:
     repo: "deb http://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib"
     state: present
 
-- name: install virtualbox
+- name: VIRTUALBOX | install virtualbox
   become: true
   apt:
     name: "{{ item }}"
@@ -33,7 +33,7 @@
     - build-essential
     - "virtualbox-{{ virtualbox.version }}"
 
-- name: add users to vb-group
+- name: VIRTUALBOX | add users to vb-group
   become: true
   user:
     name: "{{ item }}"
