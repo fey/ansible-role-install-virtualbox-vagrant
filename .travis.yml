@@ -2,6 +2,10 @@
 language: python
 python: "2.7"
 
+env:
+  - IDEM_CHANGED=4
+  - IDEM_FAILED=0
+
 before_install:
   # Make sure everything's up to date.
   - sudo apt-get update -qq
@@ -18,13 +22,13 @@ script:
   - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
 
   # Run the role/playbook with ansible-playbook.
-  - "ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo"
+  - ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
   
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
     ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
     | tee /dev/tty
-    | grep -q 'changed=0.*failed=0'
+    | grep -q 'changed=$IDEM_CHANGED.*failed=$IDEM_FAILED'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
   
