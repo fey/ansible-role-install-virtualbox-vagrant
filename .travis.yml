@@ -26,8 +26,6 @@ script:
   - ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
   
   # Run the role/playbook again, checking to make sure it's idempotent.
-  - echo $IDEM_CHANGED
-  - echo $IDEM_FAILED
   - >
     ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
     | tee /dev/tty
