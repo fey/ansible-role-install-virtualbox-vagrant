@@ -10,7 +10,7 @@
 - name: VIRTUALBOX | add vb secure key (old)
   become: true
   apt_key:
-    url: "{{ virtualbox.apt_key_url_old }}"
+    url: "{{ virtualbox_apt_key_url_old }}"
     state: present
   when: ( ansible_distribution == 'Debian' and ansible_distribution_version < '8' ) or
         ( ansible_distribution == 'Ubuntu' and ansible_distribution_version < '16.04' )
