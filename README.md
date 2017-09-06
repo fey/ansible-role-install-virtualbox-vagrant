@@ -4,16 +4,20 @@
 
 # Ansible playbook to install Virtualbox and Vagrant
 
-**THIS IS CURRENTLY IN DEVELOP**
-
 Ansible Galaxy page: https://galaxy.ansible.com/aeimer/install-virtualbox-vagrant/
 
 ## Variables
 
-| Name | Default Value | Description |
-| ---- | ------------- | ----------- |
-| virtualbox.version | ??? | Sets the version number which should be installed |
-| vagrant.version | ??? | Sets the version number which should be installed |
+| Name                       | Default Value | Description                                                 |
+| -------------------------- | ------------- | ----------------------------------------------------------- |
+| virtualbox_version         | `5.1`         | Sets the version number which should be installed           |
+| virtualbox_apt_key_url     | ...           | The url of the VB apt key                                   |
+| virtualbox_apt_key_url_old | ...           | The url of the VB apt key for older OS's                    |
+| virtualbox_apt_repo_url    | ...           | The url of the VB repository                                |
+| virtualbox_users           | `[]`          | An Array of usernames which should be added to the VB-Group |
+| vagrant_version            | `1.9.8`       | Sets the version number which should be installed           |
+| vagrant_deb_url            | ...           | The url to download the debian package                      |
+| vagrant_deb_sha_url        | ...           | The url to download the sha256 of the debain package        |
 
 ## Example Playbook
 ```YAML
