@@ -7,15 +7,15 @@
 
 - name: filter checksum
   become: true
-  command: cat /tmp/vagrant-checksum | grep x86_64.deb | cut -d' ' -f1
+  command: "cat /tmp/vagrant-checksum | grep x86_64.deb | cut -d' ' -f1"
   register: vagrant_sha
 
 - name: download vagrant deb
   become: true
   get_url:
     url: "{{ vagrant.deb_url }}"
-    dest: "/opt/vagrant.deb"
-  checksum: "sha256:{{ vagrant_sha.stdout }}"
+    dest: /opt/vagrant.deb
+    checksum: "sha256:{{ vagrant_sha.stdout }}"
 
 - name: Install vagrant
   become: true
