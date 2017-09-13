@@ -41,3 +41,7 @@ script:
   # Check if vagrant is installed
   - vagrant --version
   - vagrant --help
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+
