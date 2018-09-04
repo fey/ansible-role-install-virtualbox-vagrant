@@ -1,4 +1,4 @@
 ---
-- include: virtualbox.yml
-- include: vagrant.yml
+- import_tasks: virtualbox.yml
+- import_tasks: vagrant.yml
 
