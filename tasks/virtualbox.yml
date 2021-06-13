@@ -24,14 +24,14 @@
 - name: VIRTUALBOX | install virtualbox
   become: true
   apt:
-    name: "{{ item }}"
+    name:
+      - "linux-headers-{{ ansible_kernel }}"
+      - dkms
+      - build-essential
+      - "virtualbox-{{ virtualbox_version }}"
     state: present
     update_cache: yes
-  with_items:
-    - "linux-headers-{{ ansible_kernel }}"
-    - dkms
-    - build-essential
-    - "virtualbox-{{ virtualbox_version }}"
+
 
 - name: VIRTUALBOX | add users to vb-group
   become: true
