@@ -1,4 +1,5 @@
 galaxy_info:
+  role_name: install_virtualbox_vagrant
   author: Alexander Eimer
   description: Install VirtualBox and Vagrant
   license: MIT
