@@ -25,5 +25,5 @@ Fork of [https://github.com/aeimer/ansible-role-install-virtualbox-vagrant](http
 ```YAML
 - hosts: localhost
   roles:
-    - fey.install-virtualbox-vagrant
+    - fey.install_virtualbox_vagrant
 ```
