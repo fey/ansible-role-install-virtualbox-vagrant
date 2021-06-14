@@ -30,7 +30,7 @@ galaxy_info:
     - "xenial"
     - "yakkety"
     - "zesty"
-    - "any"
+
   galaxy_tags:
   - vagrant
   - virtualbox
