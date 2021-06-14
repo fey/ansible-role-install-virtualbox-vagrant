@@ -20,9 +20,9 @@ Ansible Galaxy page: https://galaxy.ansible.com/aeimer/install-virtualbox-vagran
 | vagrant_deb_sha_url        | ...           | The url to download the sha256 of the debain package        |
 
 ## Example Playbook
+
 ```YAML
 - hosts: localhost
   roles:
     - aeimer.install-virtualbox-vagrant
 ```
-

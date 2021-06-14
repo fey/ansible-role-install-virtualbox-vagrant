@@ -1,17 +1,37 @@
 galaxy_info:
   author: Alexander Eimer
   description: Install VirtualBox and Vagrant
-  
   license: MIT
-  min_ansible_version: 2.0
+  min_ansible_version: "2.9"
 
   platforms:
   - name: Ubuntu
     versions:
-    - all
-
+    - "artful"
+    - "bionic"
+    - "cosmic"
+    - "cuttlefish"
+    - "disco"
+    - "eoan"
+    - "focal"
+    - "groovy"
+    - "lucid"
+    - "maverick"
+    - "natty"
+    - "oneiric"
+    - "precise"
+    - "quantal"
+    - "raring"
+    - "saucy"
+    - "trusty"
+    - "utopic"
+    - "vivid"
+    - "wily"
+    - "xenial"
+    - "yakkety"
+    - "zesty"
+    - "any"
   galaxy_tags:
   - vagrant
   - virtualbox
   - ubuntu
-
