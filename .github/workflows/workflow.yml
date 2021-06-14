@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install ansible
+        run: |
+          pip install ansible
+          cp tests/ansible.cfg.test ansible.cfg
+
+      - name: Check the role/playbook's syntax
+        run: ansible-playbook -i tests/inventory tests/test.yml --syntax-check
+
+      - name: Run the role/playbook with ansible-playbook
+        run: ansible-playbook -i tests/inventory tests/test.yml --connection=local --become
+
+      - name: Run the role/playbook again, checking to make sure it's idempotent
+        run: >
+            ansible-playbook -i tests/inventory tests/test.yml --connection=local --become
+            | tee /dev/tty
+            | grep -q "changed=$IDEM_CHANGED.*failed=$IDEM_FAILED"
+            && (echo 'Idempotence test: pass' && exit 0)
+            || (echo 'Idempotence test: fail' && exit 1)
+
+      - name: Check if virtualbox is installed
+        run: |
+          VBoxManage --version
+          VBoxManage --help
+
+      - name: Check if vagrant is installed
+        run:
+          vagrant --version
+          vagrant --help
